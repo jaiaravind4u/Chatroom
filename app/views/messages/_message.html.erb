@@ -1,0 +1,22 @@
+<% if message.is_auto %>
+    <div id="message-<%= message.id %>" class="mx-auto p-2 unread-status align-items-center rounded mb-1 chat-message d-block text-center">
+        <%= sanitize message.body %>
+    </div>
+<% else %>
+    <% unless current_user.nil? %>
+        <% unless current_user.id == message.user.id %>
+            <small class="d-block mt-2"><%= message.user.name %></small>
+        <% end %>
+        <div id="message-<%= message.id %>" class="p-2 rounded mb-1 chat-message <%= current_user.id == message.user.id ? "chat-message-self bg-info" : "bg-light" %>">
+            <%= sanitize message.body %>
+            <div class="text-primary chat-message-time"><%= time_ago_in_words(message.created_at) %></div>
+        </div>
+        <div class="clearfix"></div>
+    <% else %>
+        <div id="message-<%= message.id %>" class="p-2 rounded mb-1 chat-message">
+            <%= sanitize message.body %>
+            <div class="text-primary chat-message-time"><%= time_ago_in_words(message.created_at) %></div>
+        </div>
+        <div class="clearfix"></div>
+    <% end %>
+<% end %>

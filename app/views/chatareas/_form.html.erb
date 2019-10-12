@@ -1,0 +1,39 @@
+<%= form_with(model: chatarea, local: true) do |form| %>
+  <% if chatarea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chatarea.errors.count, "error") %> prohibited this chatarea from being saved:</h2>
+
+      <ul>
+      <% chatarea.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :user_limit %>
+    <%= form.text_field :user_limit, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if chatarea.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', chatarea, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if chatarea.persisted? %>
+      <%= link_to "Cancel", chatarea, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", chatareas_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

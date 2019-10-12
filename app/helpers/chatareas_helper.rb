@@ -1,0 +1,2 @@
+module ChatareasHelper
+end

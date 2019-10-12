@@ -1,0 +1,30 @@
+<div class="chat-section">
+  <div class="row">
+    <div class="col-11 pt-1 pb-2 border-bottom">
+      <h4 class="mb-0"><%= @chatarea.name %></h4>
+      <h6 class="mb-0 small"><%= truncate(@chatarea.chatarea_users.names, length: 100) %></h6>
+    </div>
+    <div class="col-1 align-items-center pt-1 pb-2 border-bottom">
+      <%= link_to "prank", chatarea_prank_path(@chatarea.id), class: "btn btn-warning btn-sm", method: :post, remotre: true%>
+    </div>
+  </div>
+
+  <div id="chat-area-section" class="row chat-area mb-4">
+    <div class="container-fluid mt-2 mb-2">
+      <div data-user-id="<%= current_user.id %>" data-behaviour="messages" data-chatarea-id="<%= @chatarea.id %>">
+        <% @messages.each do |message| %>
+          <%= render message %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= form_for [@chatarea, Message.new], remote: true, authenticity_token: true, format: "js" do |f| %>
+    <div class="row chat-compose border-top pb-1">
+      <%= f.text_field :body, class: "col-8 col-md-10 form-control border-0", autofocus: true, autocomplete: "off", placeholder: "Type your message..." %>
+      <div class="col-4 col-md-2 p-2">
+        <%= f.submit "Send", class: "btn btn-outline-primary btn-block", id: "new_message_submit_btn" %>
+      </div>
+    </div>
+  <%end%>
+</div>

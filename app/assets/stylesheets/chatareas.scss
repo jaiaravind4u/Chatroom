@@ -1,0 +1,133 @@
+.tag {
+    padding: 5px 10px;
+    margin-bottom: .25rem;
+    margin-right: .5rem;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+.chatarea-container {
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+.chatarea-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+}
+
+.chat-messages-container {
+    height: calc(100% - 100px);
+    margin-bottom: 20px;
+}
+
+.new_message {
+    position: sticky;
+    bottom: 0px;
+}
+
+.unread-status {
+    background-color: #eee;
+}
+
+.conversation-list-item {
+    padding: 0.5rem 0.5rem;
+    margin: auto -0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.conversation-list-item:hover {
+    background: rgba(0,0,0,0.04);
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+ul .conversation-list-item:first-of-type {
+    margin-top: 0;
+}
+
+.conversation-list-initial {
+    height: 46px;
+    width: 46px;
+    line-height: 46px;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1.25em;
+    float: left;
+}
+
+.conversation-list-info {
+    float: left;
+}
+
+
+.chat-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: calc(100vh - 56px);
+}
+
+.chat-area {
+    flex: 1;
+    overflow: auto;
+}
+
+
+.chat-compose input {
+    height: 100%;
+}
+
+
+.chat-message {
+    display: inline-block;
+    width: auto;
+    max-width: 80%;
+    padding-bottom: 0.25rem !important;
+}
+
+.chat-message-self {
+    float: right;
+}
+
+.chat-message-time {
+    display: block;
+    font-size: 0.75em;
+    text-align: right;
+    margin-left: 3em;
+}
+
+.chat-sidebar {
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+
+.form-control:focus {
+    outline: none!important;
+    box-shadow: none!important;
+}
+
+@media only screen and (min-width: 768px) {
+    .chat-sidebar {
+        /* border-right: 1px solid #ddd; */
+        min-height: calc(100vh - 56px);
+    }
+    .chat-links {
+        display: block !important;
+    }
+
+    .chat-message {
+        max-width: 60%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .m-none {
+        display: none;
+    }
+}
+

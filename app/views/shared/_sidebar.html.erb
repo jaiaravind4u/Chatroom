@@ -1,0 +1,30 @@
+<nav class="chat-links pt-4 pt-md-0 pb-4 pb-md-0" id="chat-nav">
+    <% if user_signed_in? %>
+        <div class="row">
+            <div class="col-8">
+                <h4>Subscriptions</h4>
+            </div>
+            <div class="col-4 text-right">
+                <%= link_to "Create", new_chatarea_path, class: "btn btn-primary btn-sm text-white" %>
+            </div>
+        </div>
+        <ul class="list-group mt-3">
+            <% current_user.chatareas.each do |chatarea| %>
+                    <li class="d-flex justify-content-between align-items-center conversation-list-item" data-behaviour="chatarea-link" data-chatarea-id="<%= chatarea.id %>">
+                        <%= link_to chatarea_path(chatarea), class: "w-100" do %>
+                            <div class="conversation-list-initial <%= profile_badge_helper(chatarea.name[0].upcase) %> mr-2"><%= chatarea.name[0].upcase %></div>
+                            <div class="conversation-list-info">
+                                <h5 class="mb-0"><%= chatarea.name %></h5>
+                                <small id="conversation-short-message-<%= chatarea.id %>"><%= sanitize chatarea.short_display_message %></small>
+                            </div>
+                        <% end %>
+                        <div id="chat-area-list-actions">
+                            <%= link_to chatarea_chatarea_users_path(chatarea), method: :delete do %>
+                                <i class="fa text-danger fa-trash fa-xs"></i>
+                            <% end %>
+                        </div>
+                    </li>
+            <% end %>
+        </ul>
+    <% end %>
+</nav>

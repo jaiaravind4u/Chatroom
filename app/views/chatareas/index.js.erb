@@ -1,0 +1,7 @@
+if(Notification.permission === 'granted') {
+    let title = "Push Notification test";
+    let body = "Life is all about new findings"
+    let options = {body: body}
+
+    new Notification(title, options)
+}

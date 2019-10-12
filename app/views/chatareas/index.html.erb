@@ -1,0 +1,30 @@
+<% unless @common_words.empty? %>
+  <h5>Commonly used words in recent times</h5>
+  <div class="my-4 d-flex flex-row">
+    <% @common_words.each do |word| %>
+      <small class="tag"><%= word %></small>
+    <% end %>
+  </div>
+  <hr />
+<% end %>
+<div class="mt-4 table-responsive" style="overflow-y: auto;">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Users</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @chatareas.each do |chatarea| %>
+        <%= content_tag :tr, id: dom_id(chatarea), class: dom_class(chatarea) do %>
+            <td><%= chatarea.name %></td>
+            <td><%= "#{chatarea.chatarea_users.count} of #{chatarea.user_limit}" %></td>
+            <td><%= link_to "Join", chatarea_chatarea_users_path(chatarea), method: :post %></td>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

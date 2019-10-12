@@ -36,6 +36,20 @@ foreman start
 
 In web browser open [http://localhost:5000]()
 
+## To Create a Docker Image
+
+From the **root** of the app directory, run the following command
+
+```bash
+sudo docker build . -t rails-chatroom
+```
+
+After building the image execute the following command to run the application
+
+```bash
+docker run -i -t rails-chatroom
+```
+
 ## Tech stack
 
 - [Ruby on Rails v6.0.0]() -> Web framework
